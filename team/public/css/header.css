@@ -19,7 +19,7 @@ ul li{
 #header_box>ul>li{
     width: 33%;
     height: 15vh;
-    float:left;
+    float:left; 
 }
 #header_box>ul>li>img{
     margin-top: 10px;

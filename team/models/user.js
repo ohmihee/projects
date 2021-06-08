@@ -7,8 +7,8 @@ module.exports = class User extends Sequelize.Model{
             idx:{
                 type:Sequelize.STRING(20),
                 allowNull:false,
-                primarykey:true,
-                unique:true
+                // primarykey:true,
+                // unique:true
             },
             psw:{
                 type:Sequelize.STRING(30),

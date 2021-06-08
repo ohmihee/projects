@@ -20,10 +20,10 @@
                     <li>경일게임아카데미</li>
                     <li>경일게임아카데미에 오신 것을 환영합니다. <br>경일게임아카데미가 여러분의 밝은 미래와 함께 하겠습니다.</li>
                     <li>
-                        <form class="login-content" action="/auth/login" method="POST">
+                        <form class="login-content" action="/user/login/success" method="POST">
                             <div>
                                 <label for="uname">Username</label>
-                                <input type="email" placeholder="이메일을 입력하세요" name="uemail" required>
+                                <input type="text" placeholder="아이디를 입력하세요" name="email" required>
                     
                                 <label for="psw">Password</label>
                                 <input type="password" placeholder="비밀번호를 입력하세요" name="psw" required>
@@ -34,7 +34,6 @@
                             <li><a href="/user/join">회원가입</a></li>
                             <li><a href="/user/search_id">아이디찾기</a></li>
                             <li><a href="/user/search_psw">비밀번호찾기</a></li>
-                            <li><a href="/user/login">로그인</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -44,8 +43,11 @@
                    <li><p>sns계정으로 로그인 하기</p></li>
                    <li>
                        <ul>
-                           <li>네이버 계정 로그인</li>
-                           <li>카카오 계정 로그인</li>
+                           <li>네이버 계정로그인</li>
+                           <li>
+                               카카오 계정 로그인
+                               <a href="/user/auth/kakao" id="kakao" class="btn">카카오톡</a>
+                           </li>
                        </ul>
                    </li>
                    <li></li>

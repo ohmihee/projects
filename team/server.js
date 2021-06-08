@@ -10,14 +10,23 @@ const morgan = require('morgan')
 const session = require('express-session')
 const {sequelize} = require('./models')
 //const sequelize = require('/models').sequelize
+const ctoken = require('./jwt')
+const chash = require('./chash')
+const axios = require('axios')
+
+
+
+app.use(morgan('dev'))
+
+
 
 sequelize.sync({force:false})
 
 .then(()=>{
-    console.log('suc')
+    console.log('db접속에 성공하였습니다.')
 })
 .catch((err)=>{
-    console.log(err)
+    console.log('db error==================',err)
 })
 
 app.use(bodyParser.urlencoded({extended:false}))
@@ -47,19 +56,19 @@ app.use('/',Router)
 
 
 
-app.use((req,res,next)=>{
-    const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`)
-    error.status = 404;
+// app.use((req,res,next)=>{
+//     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`)
+//     error.status = 404;
    
-    next(error)
-})
+//     next(error)
+// })
 
-app.use((err,req,res,next)=>{
-    res.locals.message = err.message;
-    res.locals.error = process.env.NODE_ENV !=='production'?err:{};
-    res.status(err.status||500)
-    res.render('error')
-})
+// app.use((err,req,res,next)=>{
+//     res.locals.message = err.message;
+//     res.locals.error = process.env.NODE_ENV !=='production'?err:{};
+//     res.status(err.status||500)
+//     res.render('error')
+// })
 // let dd = new Date().toLocaleDateString()
 // console.log(dd)
 
