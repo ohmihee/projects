@@ -12,6 +12,7 @@ const {sequelize} = require('./models')
 //const sequelize = require('/models').sequelize
 
 sequelize.sync({force:false})
+
 .then(()=>{
     console.log('suc')
 })
