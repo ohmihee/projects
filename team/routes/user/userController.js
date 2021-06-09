@@ -2,57 +2,73 @@
 const { default: axios } = require("axios")
 const { User } = require("../../models")
 const qs =require('qs')
+const pwHash = require('../../createHash.js')
+const ctoken = require('../../jwt.js')
 
-
-
-
-let login = (req,res)=>{
-    
+let login = (req,res)=>{    
     if(req.originalUrl=='/user/login'){
         res.render('./user/login.html')
     }
 }
+
 let login_success = async (req,res)=>{
-    //console.log(req.body.email)
+    let {email,psw} = req.body
+    
+    let result = {}
+    let hashedPw = pwHash(psw)
+    console.log(hashedPw)
+    
     try{
         let resu = await User.findOne({
-            idx:req.body.email
+            where:{idx:email}
         })
-        //console.log('idx======================',resu.idx)
-        if(resu.idx==req.body.email&resu.psw==req.body.psw){
-            console.log('succccccccccc')
+        
+        // if(resu !== null){
+        //     result = {
+        //         result:true,
+        //         msg:'login 성공'
+        //     }
+        //     //token생성
+        //     let token = ctoken(email);
+        //     res.cookie('AccessToken',token,{})
+        // } else{
+        //     result={
+        //         result:false,
+        //         msg:'check your id and password'
+        //     }            
+        // }
+        // res.json(result)
+        // res.redirect()
+
+        console.log('db',resu.psw)
+        if(resu.idx==email&&resu.psw==hashedPw){  
+            let token = ctoken(email)   
+            res.cookie('AccessToken',token,{})       
             res.redirect('/')
         }else{
-            res.send('<p>로그인에 실패하였습니다.</p>')
-        }
-            
-    }catch(e){
-        //console.log('error=================',e)
-    }
+            res.send('<p>해당하는 사용자가 존재하지 않거나 아이디와 비밀번호가 일치하지 않습니다..</p>')
+        }      
 
+    }catch(e){
+        console.log('error=================',e)
+    }
 }
+
 let join = (req,res)=>{
     res.render('./user/join.html')
 }
-let join_success = async (req,res)=>{   
-   // console.log(req.body)
+
+let join_success = async (req,res)=>{      
     let {idx,psw,name,birth,gender} = req.body    
-    //console.log(req.body,'zzz')
-    console.log(req.body.idx,'zzzz')
+        psww = pwHash(psw)
+    console.log(req.body.idx,'join_success부분')
     let tel = req.body.tel
         tel = tel.replace('-','').replace('-','')
-        //console.log(tel)
     let created_at = new Date().toLocaleDateString()
     let img = 'img'
-    let email = 'email'   
+    let email = 'email'
 
-    try{
-        let rst = await User.create({
-            idx,psw,name,birth,gender,created_at,tel,img,email
-        })        
-    }catch(e){
-        console.log('error',e)
-    }
+    await User.create({idx,psw:psww,name,birth,gender,created_at,tel,img,email})
     res.redirect('/')
 }
 
@@ -127,64 +143,6 @@ let login_kakao_callback = async(req,res)=>{
     res.redirect('/')
 }
 
-//     const {session,query} = req
-//     const {code} = query
-    
-//     let token;
-//     try{
-//         token = await axios({
-//             method:'POST',
-//             url:'https://kauth.kakao.com/oauth/token',
-//             headers:{
-//                 'content-type':'application/x-www-form-urlencoded',
-//             },
-//             data:qs.stringify({
-//                 grant_type:'authorization_code',
-//                 client_id:kakao.clientID,
-//                 client_secret:kakao.clientSecret,
-//                 redirectUri:kakao.redirectUri,
-//                 code: code,
-
-//             })
-//         })
-
-//     }catch(err){
-//         res.json(err.data)
-//     }
-   
-//     let user
-//     try{
-//         user = await axios({
-//             method:'GET',
-//             url:'https://kapi.kakao.com/v2/user/me',
-//             headers:{
-//                 Authorization:`Bearer ${token.data.access_token}`
-//             }
-//         })
-//     }catch(err){
-//         res.json(err.data)
-//     }
-
-
-//     const authData = {
-//         ...token.data,
-//         ...user.data
-
-//     }
-//     session.authData = {
-//         ['kakao']:authData
-//     }
-//     res.redirect('/')
-// }
-
-// const authMiddleware = (req,res,next)=>{
-//     const {session} = req;
-//     if(session.authData==undefined){
-//         res.redirect('/?msg=로그인 되어있지 않음')
-//     }else{
-//         next()
-//     }
-// }
 
 
 

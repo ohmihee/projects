@@ -1,7 +1,7 @@
 const express = require('express')
-const app = express()
 const router = express.Router()
 const userController = require('./userController.js')
+const auth = require('../../middleware/auth.js')
 
 //user
 

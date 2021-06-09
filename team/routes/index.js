@@ -23,7 +23,9 @@ router.use('/user',userRouter)
 // })
 
 router.get('/',(req,res)=>{
+    //console.log(req)
     res.render('index.html')
+
 })
 
 

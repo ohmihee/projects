@@ -11,33 +11,27 @@ const session = require('express-session')
 const {sequelize} = require('./models')
 //const sequelize = require('/models').sequelize
 const ctoken = require('./jwt')
-const chash = require('./chash')
+const pwhash = require('./createHash')
 const axios = require('axios')
+const crypto = require('crypto')
+const auth = require('./middleware/auth')
 
-
-
-app.use(morgan('dev'))
-
-
+app.set('view engine','html')
 
 sequelize.sync({force:false})
-
 .then(()=>{
     console.log('db접속에 성공하였습니다.')
 })
 .catch((err)=>{
-    console.log('db error==================',err)
+    console.log('db error',err)
 })
 
+nunjucks.configure('views',{express:app})
+
+app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json())
-
 app.use(cookieParser(process.env.COOKIE_SECRET))
-
-
-
-app.set('view engine','html')
-
 app.use(express.static('public'))
 app.use(session({
     resave:false,
@@ -48,8 +42,6 @@ app.use(session({
         secure:false,
     }
 }))
-
-nunjucks.configure('views',{express:app})
 
 app.use('/',Router)
 

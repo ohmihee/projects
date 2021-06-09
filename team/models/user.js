@@ -11,7 +11,7 @@ module.exports = class User extends Sequelize.Model{
                 // unique:true
             },
             psw:{
-                type:Sequelize.STRING(30),
+                type:Sequelize.STRING(255),
                 allowNull:false,
             },
             name:{
