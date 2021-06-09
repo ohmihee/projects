@@ -7,6 +7,7 @@ const auth = require('../../middleware/auth.js')
 
 router.post('/login/success',userController.login_success)
 router.get('/login',userController.login)
+router.get('/logout',userController.logout)
 router.get('/auth/kakao/callback',userController.login_kakao_callback)
 router.get('/auth/kakao',userController.login_kakao)
 router.post('/join/success',userController.join_success)

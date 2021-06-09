@@ -1,5 +1,4 @@
-//const e = require("express")
-const { default: axios } = require("axios")
+888888888888888888888888888888888888const { default: axios } = require("axios")
 const { User } = require("../../models")
 const qs =require('qs')
 const pwHash = require('../../createHash.js')
@@ -13,45 +12,31 @@ let login = (req,res)=>{
 
 let login_success = async (req,res)=>{
     let {email,psw} = req.body
-    
     let result = {}
     let hashedPw = pwHash(psw)
-    console.log(hashedPw)
-    
+    console.log('asdfasdfasdfasdfasdfasdfasdfasdfasdfadsfadsf')
     try{
         let resu = await User.findOne({
-            where:{idx:email}
+            where:{
+                idx: email,
+                psw: hashedPw
+            }
         })
         
-        // if(resu !== null){
-        //     result = {
-        //         result:true,
-        //         msg:'login 성공'
-        //     }
-        //     //token생성
-        //     let token = ctoken(email);
-        //     res.cookie('AccessToken',token,{})
-        // } else{
-        //     result={
-        //         result:false,
-        //         msg:'check your id and password'
-        //     }            
-        // }
-        // res.json(result)
-        // res.redirect()
-
-        console.log('db',resu.psw)
-        if(resu.idx==email&&resu.psw==hashedPw){  
-            let token = ctoken(email)   
-            res.cookie('AccessToken',token,{})       
-            res.redirect('/')
-        }else{
-            res.send('<p>해당하는 사용자가 존재하지 않거나 아이디와 비밀번호가 일치하지 않습니다..</p>')
-        }      
+        let token = ctoken(email)   
+        res.cookie('AccessToken',token,{})
+        req.session.uid = resu.idx      
+        res.redirect('/')
 
     }catch(e){
-        console.log('error=================',e)
+        res.send('<p>해당하는 사용자가 존재하지 않거나 아이디와 비밀번호가 일치하지 않습니다..</p>')
     }
+}
+
+let logout = (req,res)=>{
+    console.log(req.cookies)
+    console.log(req.session)
+    res.redirect('/')
 }
 
 let join = (req,res)=>{
@@ -120,8 +105,6 @@ let login_kakao_callback = async(req,res)=>{
         res.json(err.data)
     }
 
-    
-
    // req.session.kakao = user.data;
     /* 위에랑 같은 구문
     req.session = {
@@ -129,7 +112,6 @@ let login_kakao_callback = async(req,res)=>{
     }
     // 다양한 로그인 방식을 이용하기 위해서는 위의 방법이 더욱 유용하다.
     */
-
     const authData = {
         ...token.data,
         ...user.data,
@@ -145,12 +127,12 @@ let login_kakao_callback = async(req,res)=>{
 
 
 
-
 module.exports = {
     login:login,
     join:join,
     join_success:join_success,
     login_success:login_success,
     login_kakao:login_kakao,
-    login_kakao_callback:login_kakao_callback
+    login_kakao_callback:login_kakao_callback,
+    logout:logout
 }
