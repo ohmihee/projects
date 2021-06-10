@@ -18,7 +18,7 @@ const auth = require('./middleware/auth')
 
 app.set('view engine','html')
 
-sequelize.sync({force:false})
+sequelize.sync({force:true})
 .then(()=>{
     console.log('db접속에 성공하였습니다.')
 })

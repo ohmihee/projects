@@ -1,8 +1,9 @@
-888888888888888888888888888888888888const { default: axios } = require("axios")
+
 const { User } = require("../../models")
 const qs =require('qs')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
+const { session } = require("passport")
 
 let login = (req,res)=>{    
     if(req.originalUrl=='/user/login'){
@@ -23,9 +24,11 @@ let login_success = async (req,res)=>{
             }
         })
         
+        
         let token = ctoken(email)   
         res.cookie('AccessToken',token,{})
-        req.session.uid = resu.idx      
+        req.session.uid = {["local"]:resu.idx}
+           
         res.redirect('/')
 
     }catch(e){
@@ -34,9 +37,18 @@ let login_success = async (req,res)=>{
 }
 
 let logout = (req,res)=>{
-    console.log(req.cookies)
-    console.log(req.session)
-    res.redirect('/')
+    
+    console.log(req.session.uid)
+    const {session} = req
+    const {uid} = session
+    const provider = Object.keys(uid)[0]
+    switch(provider){
+        case "local":
+            delete session.uid
+            res.redirect('/?msg=로그아웃되셨습니다.')
+        break;
+    }
+    
 }
 
 let join = (req,res)=>{
@@ -125,6 +137,16 @@ let login_kakao_callback = async(req,res)=>{
     res.redirect('/')
 }
 
+// 클라이언트 ID
+//768593577687-f1a6it1fq9s9vkqe73ij8c3fkrdav338.apps.googleusercontent.com
+// 클라이언트 보안 비밀번호
+// mbkz28nQm5A_YlqOdkW-rEGN
+
+let login_google = (req,res)=>{
+    res.send('google login')
+}
+
+
 
 
 module.exports = {
@@ -134,5 +156,6 @@ module.exports = {
     login_success:login_success,
     login_kakao:login_kakao,
     login_kakao_callback:login_kakao_callback,
-    logout:logout
+    logout:logout,
+    login_google:login_google
 }

@@ -7,11 +7,9 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
-const User = require('./user')
-const Col = require('./col')
-const Course = require('./course')
-const Community = require('./community')
-
+const User = require('./user.js')
+const City = require('./city.js')
+ 
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -34,19 +32,11 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
-
 db.User = User
-db.Col = Col
-db.Course = Course
-db.Community = Community
+db.City = City
 
 User.init(sequelize)
-Col.init(sequelize)
-Course.init(sequelize)
-Community.init(sequelize)
-
-//User.associate(db)
-
+City.init(sequelize)
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

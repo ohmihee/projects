@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="768593577687-f1a6it1fq9s9vkqe73ij8c3fkrdav338.apps.googleusercontent.com">
+    <script type="text/javascript">
+        function onSignIn(googleUser) {
+        let profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+    
+    </script>
 </head>
 <body>
     {% include "header.html" %}
@@ -43,11 +55,12 @@
                    <li><p>sns계정으로 로그인 하기</p></li>
                    <li>
                        <ul>
-                           <li>네이버 계정로그인</li>
-                                <a href="/user/login/naver" id="naver" class="btn">네이버 로그인</a>
+                           <li>구글 계정로그인</li>
+                                <a href="/user/login/google" id="naver" class="btn">google 로그인</a>
+                                <div class="g-signin2" data-onsuccess="onSignIn">구글 로그인</div>
                            <li>
                                카카오 계정 로그인
-                               <a href="/user/auth/kakao" id="kakao" class="btn">카카오톡 로그인</a>
+                               <a href="/user/auth/kakao" id="kakao" class="btn">Kakao 로그인</a>
                            </li>
                        </ul>
                    </li>

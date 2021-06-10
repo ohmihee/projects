@@ -3,6 +3,7 @@ const { route } = require('./user')
 const router = express.Router()
 const userRouter = require('./user/index.js')
 const {User} = require('../models')
+const admin = require('./admin/index.js')
 
 
 
@@ -21,7 +22,7 @@ router.use('/user',userRouter)
 //     //console.log(req)
 //     res.render('index.html')
 // })
-
+router.use('/admin',admin)
 router.get('/',(req,res)=>{
     //console.log(req)
     res.render('index.html')
