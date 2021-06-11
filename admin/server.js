@@ -8,7 +8,6 @@ const {sequelize} = require('./models')
 const cookieParser = require('cookie-parser')
 const Router = require('./routes/index.js')
 require('dotenv').config('env')
-require('express-async-errors')
 
 const port = process.env.PORT||3000
 

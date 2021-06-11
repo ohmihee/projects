@@ -7,8 +7,11 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+const Adminlist = require('./adminlist.js')
 const User = require('./user.js')
-const City = require('./city.js')
+const Course = require('./course.js')
+const Board = require('./board.js')
+
  
 let sequelize;
 if (config.use_env_variable) {
@@ -32,11 +35,16 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
-db.User = User
-db.City = City
 
+db.Adminlist = Adminlist
+db.User = User
+db.Course = Course
+db.Board = Board
+
+Adminlist.init(sequelize)
 User.init(sequelize)
-City.init(sequelize)
+Course.init(sequelize)
+Board.init(sequelize)
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/admin/search.css">
+</head>
+<body>
+    <div id="top_m">
+        <div id="top_contents_container">
+            <div id="logo">
+                <p>경일직업능력개발원</p>
+            </div>
+            <ul>
+                <li><a href="">administrator</a></li>
+                <li><a href="">시설소개</a></li>
+                <li><a href="">교육과정</a></li>
+                <li><a href="">취업정보</a></li>
+                <li><a href="">커뮤니티</a></li>
+                <li><a href="">상담신청</a></li>
+                <li><a href="">방문자정보</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="contents_m">
+        <div id="left_contents_container_m">
+            <ul>
+                <li class="manager_mode_m">
+                    <p><a href="">관리자모드</a></p>
+                    <ul>
+                        <li><span>최고관리자  :  </span><span><a href="">   로그인</a></span></li>
+                        <li><span id="manager_name_m">{admin}{최고관리자}</span></li>
+                        <li><span>현재 시간</span></li>
+                    </ul>
+                </li>
+                <li class="left_menu_m">
+                    <table class="left_menu_table_m">
+                        <thead>
+                            <tr>
+                                <th>좌측메뉴</th>
+                            </tr>
+                        </thead>                    
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <ul id="list_column_m">
+                                        <li><a href="">관리자리스트</a></li>
+                                        <li><a href="">사이트환경설정</a></li>
+                                        <li><a href="">게시판생성관리</a></li>
+                                        <li><a href="">게시판그룹관리</a></li>
+                                        <li><a href="">팝업관리</a></li>
+                                        <li><a href="">메인비쥬얼[보임]</a></li>
+                                        <li><a href="">메인비쥬얼[숨김]</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <div id="main_container_m">
+            <div id="main_container_top_m">
+                <p>관리자리스트</p>
+                <form>
+                    <fieldset>
+                        <legned>관리자리스트</legned>
+                        가입일자 : <input type="date">
+                        검색조건 : 
+                                  <select name="search_condition_m">
+                                      <option value="name">이름</option>
+                                      <option value="class_name">반</option>
+                                  </select>
+                                  <input type="text">
+                        <input type="submit" value="검색">
+                        <input type="reset"  value="초기화">
+                    </fieldset>
+                </form>
+            </div>
+            <idv id="main_container_main_m">
+                <fieldset>
+                    <input type="button" value="선택항목삭제" name="del_btn">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>아이디</th>
+                                <th>이름</th>
+                                <th>닉네임</th>
+                                <th>연락처</th>
+                                <th>email</th>
+                                <th>가입일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>번호칸</th>
+                                <th>{{id}}id</th>
+                                <th>{{name}}name</th>
+                                <th>{{nickName}}nickname</th>
+                                <th>{{contact}}contact</th>
+                                <th>{{email}}email</th>
+                                <th>{{enrolDate}}date</th>
+                                <th>
+                                    <input type="button" value="수정" name="reset">
+                                    <input type="button" value="삭제" name="del">
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </idv>
+        </div>
+    </div>
+</body>
+</html>
