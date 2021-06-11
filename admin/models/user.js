@@ -3,47 +3,62 @@ const Sequelize = require('sequelize')
 module.exports = class User extends Sequelize.Model{
     static init(sequelize){
         return super.init({
-            nickName:{
+            userName:{
                 type:Sequelize.STRING(20),
                 allowNull:false,
-                unique:true
             },
-            psw:{
+            userIdx:{
+                type:Sequelize.STRING(20),
+                allowNull:false,
+                unique:true,
+            },
+            userPsw:{
                 type:Sequelize.STRING(255),
                 allowNull:false,
             },
-            name:{
+            courseName:{
                 type:Sequelize.STRING(30),
                 allowNull:false,
             },
-            birth:{
-                type:Sequelize.DATE,
-                allowNull:false,
-            },
-            gender:{
+            paycheck:{
                 type:Sequelize.BOOLEAN,
                 allowNull:true
             },
-            email:{
-                type:Sequelize.STRING(50),
-                allowNull:false
+            userBirth:{
+                type:Sequelize.DATE,
+                allowNull:false,
             },
             created_at:{
                 allowNull:false,
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,
             },
-            tel:{
+            usesrTel:{
                 allowNull:false,
                 unique:true,
                 type:Sequelize.INTEGER
-
             },
-            img:{
+            userImg:{
                 type:Sequelize.TEXT,
-                allowNull:true          
+                allowNull:true
+            },
+            userEtc:{
+                type:Sequelize.TEXT,
+                allowNull:true
+            },
+            userAddress:{
+                type:Sequelize.STRING(100),
+                allowNull:true
+            },
+            employmentStatus:{
+                type:Sequelize.BOOLEAN,
+                allowNull:false
+            },
+            portfolio:{
+                type:Sequelize.BOOLEAN,
+                allowNull:false
 
-            }            
+            }
         },{
             sequelize,
             timestamps:false,

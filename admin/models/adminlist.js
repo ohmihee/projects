@@ -7,7 +7,7 @@ module.exports = class Adminlist extends Sequelize.Model{
                 type:Sequelize.STRING(20),
                 allowNull:false
             },
-            nickname:{
+            idx:{
                 type:Sequelize.STRING(20),
                 allowNull:false,
                 unique:true,
@@ -20,9 +20,9 @@ module.exports = class Adminlist extends Sequelize.Model{
                 type:Sequelize.DATE,
                 allowNull:false,
             },
-            class:{
+            courseName:{
                 type:Sequelize.STRING(30),
-                allowNull:false,
+                allowNull:true,
             },
             level:{
                 type:Sequelize.STRING(30),
@@ -33,11 +33,6 @@ module.exports = class Adminlist extends Sequelize.Model{
                 unique:true,
                 type:Sequelize.INTEGER
             },
-            resetDate:{
-                allowNull:false,
-                type:Sequelize.DATE,
-                defaultValue:Sequelize.NOW,
-            },
             startDate:{
                 allowNull:false,
                 type:Sequelize.DATE,
@@ -46,6 +41,10 @@ module.exports = class Adminlist extends Sequelize.Model{
             email:{
                 type:Sequelize.STRING(50),
                 allowNull:false 
+            },
+            img:{
+                type:Sequelize.TEXT,
+                allowNull:true
             }
             
         },{
@@ -53,7 +52,7 @@ module.exports = class Adminlist extends Sequelize.Model{
             timestamps:false,
             underscored:false,
             modelName:'adminlist',
-            tableName:'adminlist',
+            tableName:'adminlists',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'

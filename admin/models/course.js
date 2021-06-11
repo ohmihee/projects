@@ -3,42 +3,62 @@ const Sequelize = require('sequelize')
 module.exports = class Course extends Sequelize.Model{
     static init(sequelize){
         return super.init({
-            title:{
+            courseName:{
                 type:Sequelize.STRING(30),
                 allowNull:false,
-                unique:true,
             },
-            img:{
-                type:Sequelize.TEXT,
-                allowNull:true,
-            },
-            info:{
-                type:Sequelize.TEXT,
-                allowNull:false,
-            },
-            section:{
-                type:Sequelize.STRING(30),
-                allowNull:true,
-            },
-            status:{
+            name:{
                 type:Sequelize.STRING(20),
                 allowNull:false
             },
-            duration:{
-                type:Sequelize.STRING(30),
-                allowNull:true,
+            coursetype:{
+                type:Sequelize.STRING(20),
+                allowNull:true
             },
-            time:{
-                type:Sequelize.STRING(30),
-                allowNull:true,
+            idx:{
+                type:Sequelize.STRING(20),
+                allowNull:false,
+                unique:true,
             },
             pay:{
                 type:Sequelize.INTEGER,
-                allowNull:true,
-            },
-            teacher:{
-                type:Sequelize.STRING(20),
                 allowNull:true
+            },
+            haed_count:{
+                type:Sequelize.INTEGER,
+                allowNull:true
+            },
+            startDate:{
+                type:Sequelize.DATE,
+                allowNull:true
+            },
+            endDate:{
+                type:Sequelize.DATE,
+                allowNull:true
+            },
+            contents:{
+                type:Sequelize.STRING(255),
+                allowNull:false,
+            },
+            time:{
+                type:Sequelize.TIME,
+                allowNull:true
+            },
+            tag:{
+                type:Sequelize.STRING(50),
+                allowNull:true
+            },
+            support:{
+                type:Sequelize.STRING(100),
+                allowNull:true
+            },
+            description:{
+                type:Sequelize.STRING(100),
+                allowNull:true
+            },
+            onoff:{
+                type:Sequelize.BOOLEAN,
+                allowNull:false
             }
         },{
             sequelize,

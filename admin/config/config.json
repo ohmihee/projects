@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "midas3356",
-    "database": "team",
+    "password": "root",
+    "database": "algml",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
