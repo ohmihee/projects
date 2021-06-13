@@ -64,13 +64,46 @@ a{
     flex-direction: column;
     justify-content: space-around;
 }
+#main_container_top_m fieldset{
+    margin-bottom: 40px;
+}
 #main_container_m{
     height: 300px;
+    margin-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-left: 50px;
 }
-#main_container_main_m table{
+#main_container_main_m form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 800px;
+    border:1px solid black;
 }
+#searched_form div{
+    
+    width: 200px;
+    padding: 10px;
+}
+label{
+    font-size: 17px;
+    font-weight: 400;
+}
+.submit{
+    margin-top: 0;
+    width: 600px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    text-align: end;
+}
+#submit{
+    width: 200px;
+    height:30px;
+    margin-top: 10px;
+    margin-right: 40px;
+}
+
+
