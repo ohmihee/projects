@@ -68,13 +68,23 @@ a{
     margin-bottom: 40px;
 }
 #main_container_m{
-    height: 300px;
-    margin-top: 80px;
+    height: 700px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     margin-left: 50px;
 }
+#admin_add_form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 800px;
+    margin-bottom:40px ;
+}
+
+
 #main_container_main_m form{
     display: flex;
     flex-direction: row;
@@ -82,7 +92,7 @@ a{
     width: 800px;
     border:1px solid black;
 }
-#searched_form div{
+#searched_form div, #admin_add_form>div{
     
     width: 200px;
     padding: 10px;

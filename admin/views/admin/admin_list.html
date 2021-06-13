@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/admin/search.css">
+    <script type="text/javascript" src="/js/index.js"></script>
 </head>
 <body>
     <div id="top_m">
@@ -53,7 +54,7 @@
                                         <li><a href="">팝업관리</a></li>
                                         <li><a href="">메인비쥬얼[보임]</a></li>
                                         <li><a href="">메인비쥬얼[숨김]</a></li>
-                                        <li><a href="/admin/admin_list/user_list">사용자 관리</a></li>
+                                        <li><a href="/admin/user_list">사용자 관리</a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -68,7 +69,7 @@
                 <form action="/admin/admin_search" method="POST">
                     <fieldset>
                         <legned>관리자리스트</legned>
-                        담당 : <input type="text">
+                        관리자등급 : <input type="text">
                         검색조건 : 
                                   <select name="search_condition_m">
                                       <option value="name">이름</option>
@@ -81,29 +82,50 @@
                 </form>
             </div>
             <div id="main_container_main_m">
-                <button class="admin_add_popup" onclick="openAdminAdd()">관리자 추가</button>
-                <form action="/admin/admin_add" method="post" style="display: block;">
-                    <label for="name" id="admin_label">이름</label>
-                    <input type="text" placeholder="이름" name="name" required>
-                    <label for="idx" id="admin_label">아이디</label>
-                    <input type="text" placeholder="아이디" name="idx" required>
-                    <label for="psw" id="admin_label">비밀번호</label>
-                    <input type="password" placeholder="비밀번호" name="psw" required>
-                    <label for="birth" id="admin_label">생년월인</label>
-                    <input type="date" placeholder="생년월일" name="birth" required>
-                    <label for="courseName" id="admin_label">직무</label>
-                    <input type="text" placeholder="직무" name="courseName" required>
-                    <label for="level" id="admin_label">관리자등급</label>
-                    <input type="text" placeholder="등급" name="level" required>
-                    <label for="Tel" id="admin_label">연락처</label>
-                    <input type="tel" placeholder="연락처" name="tel" required>
-                    <label for="startDate" id="admin_label">입사일</label>
-                    <input type="date" placeholder="입사일" name="startDate" required>
-                    <label for="Email" id="admin_label">이메알</label>
-                    <input type="email" placeholder="이메일" name="email" required>
-                    <label for="img" id="admin_label">사진</label>
-                    <input type="file" placeholder="image" name="img" required>
-                    <input type="submit" value="관리자 추가">
+                <form action="/admin/admin_add" method="post"  id="admin_add_form">
+                    <div>
+                        <label for="name" id="admin_label">이름</label>
+                        <input type="text" placeholder="이름" name="name" required>
+                    </div>
+                    <div>
+                        <label for="idx" id="admin_label">아이디</label>
+                        <input type="text" placeholder="아이디" name="idx" required>
+                    </div>
+                    <div>
+                        <label for="psw" id="admin_label">비밀번호</label>
+                        <input type="password" placeholder="비밀번호" name="psw" required>
+                    </div>
+                    <div>
+                        <label for="birth" id="admin_label">생년월인</label>
+                        <input type="date" placeholder="생년월일" name="birth" required>
+                    </div>
+                    <div>
+                        <label for="courseName" id="admin_label">직무</label>
+                        <input type="text" placeholder="직무" name="courseName" required>
+                    </div>
+                    <div>
+                        <label for="level" id="admin_label">관리자등급</label>
+                        <input type="text" placeholder="등급" name="level" required>
+                    </div>
+                    <div>
+                        <label for="Tel" id="admin_label">연락처</label>
+                        <input type="tel" placeholder="연락처" name="tel" required>
+                    </div>
+                    <div>
+                        <label for="startDate" id="admin_label">입사일</label>
+                        <input type="date" placeholder="입사일" name="startDate" required>
+                    </div>
+                    <div>
+                        <label for="Email" id="admin_label">이메알</label>
+                        <input type="email" placeholder="이메일" name="email" required>
+                    </div>
+                    <div>
+                        <label for="img" id="admin_label">사진</label>
+                        <input type="file" placeholder="image" name="img">
+                    </div>
+                    <div>
+                        <input type="submit" value="관리자 추가">
+                    </div>
                 </form>
                 <form action="/admin/searched_data" id="searched_form" method="POST">
                         <div>

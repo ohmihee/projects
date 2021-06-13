@@ -33,7 +33,7 @@ module.exports = class User extends Sequelize.Model{
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,
             },
-            usesrTel:{
+            userTel:{
                 allowNull:false,
                 unique:true,
                 type:Sequelize.INTEGER
