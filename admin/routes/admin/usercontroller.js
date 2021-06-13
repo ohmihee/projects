@@ -43,9 +43,53 @@ let admin_add = async (req,res)=>{
     res.redirect('/admin/admin_list')
 }
 
-let searched_data = (req,res)=>{
-    console.log(req)
-    res.send('post 확인중')
+let searched_data = async (req,res)=>{
+    console.log(req.body,'==============================')
+    if(req.body.delete=='삭제'){
+        await Adminlist.destroy({
+            where:{
+                idx:req.body.Idx
+            }
+        })
+        res.send('해당 관리자가 삭제되었습니다.')
+    }else{
+        res.send('수정 부분 코드 짜기')
+    }
+}
+let admin_search = async (req,res)=>{
+    //console.log(req.body.Name,'==========')
+    if(req.body.search_condition_m=="name"){
+        let resu = await Adminlist.findOne({
+            where:{
+                name:req.body.value
+            }
+        })
+        let date = resu.startDate
+        let getDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+        res.render('./admin/admin_list.html',{resu,getDate})
+        console.log('resu=======================',resu)
+    }else if(req.body.search_condition_m=="class_name"){
+        let resu = await Adminlist.findOne({
+            where:{
+                courseName:req.body.value
+            }
+        })
+        let date = resu.startDate
+        let getDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+        res.render('./admin/admin_list.html',{resu,getDate})
+        console.log('resu=======================',resu)
+        
+    }else{
+        res.send('잘못입력하셨습니다.')
+    }
 }
 
-module.exports = {login,login_post,admin_list,admin_add,searched_data}
+let user_list = (req,res)=>{
+    res.render('./admin/user_list.html')
+}
+
+module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list}
+
+// 질문
+// 수정클릭시 update 방법
+// 가입일 포멧에 맞춰서 넣는 것

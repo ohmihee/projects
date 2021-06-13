@@ -53,6 +53,7 @@
                                         <li><a href="">팝업관리</a></li>
                                         <li><a href="">메인비쥬얼[보임]</a></li>
                                         <li><a href="">메인비쥬얼[숨김]</a></li>
+                                        <li><a href="/admin/admin_list/user_list">사용자 관리</a></li>
                                     </ul>
                                 </td>
                             </tr>
@@ -64,24 +65,24 @@
         <div id="main_container_m">
             <div id="main_container_top_m">
                 <p>관리자리스트</p>
-                <form>
+                <form action="/admin/admin_search" method="POST">
                     <fieldset>
                         <legned>관리자리스트</legned>
-                        가입일자 : <input type="date">
+                        담당 : <input type="text">
                         검색조건 : 
                                   <select name="search_condition_m">
                                       <option value="name">이름</option>
                                       <option value="class_name">반</option>
                                   </select>
-                                  <input type="text">
-                        <input type="submit" value="검색">
-                        <input type="reset"  value="초기화">
+                                  <input type="text" name="value" >
+                        <input type="submit" value="검색" name="search">
+                        <input type="reset"  value="초기화" name="reset">
                     </fieldset>
                 </form>
             </div>
             <div id="main_container_main_m">
                 <button class="admin_add_popup" onclick="openAdminAdd()">관리자 추가</button>
-                <form action="/admin/admin_add" method="post" style="display: none;">
+                <form action="/admin/admin_add" method="post" style="display: block;">
                     <label for="name" id="admin_label">이름</label>
                     <input type="text" placeholder="이름" name="name" required>
                     <label for="idx" id="admin_label">아이디</label>
