@@ -117,6 +117,5 @@ let board_make = async (req,res)=>{
 module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make}
 
 // 질문
-// user_list에서 한번에 현재 사용자에 대한 정보를 보여주는 것 nunjucks for문
 // 수정클릭시 update 방법
 // 가입일 포멧에 맞춰서 넣는 것

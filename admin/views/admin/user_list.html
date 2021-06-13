@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/admin/userlist.css">
 </head>
 <body>
     <form action="/admin/user_list" method="POST">
@@ -85,7 +86,15 @@
         <th>포트폴리오</th>
         <th>기타사항</th>
         <th>사진</th>
+        
+        {% set res = resu %}
+        {% for item in res %}
         <tr>
+            <td>{{res[loop.index-1].userName}}</td>
+            <td>{{res[loop.index-1].userIdx}}</td>
+        </tr>        
+        {% endfor %}
+        <!-- <tr>
             <td>name</td>
             <td>idx</td>
             <td>psw</td>
@@ -99,7 +108,7 @@
             <td>portfolio</td>
             <td>userEtc</td>
             <td>userImg</td>
-        </tr>
+        </tr> -->
     </table>
 
 </body>
