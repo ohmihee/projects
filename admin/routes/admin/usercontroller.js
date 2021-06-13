@@ -1,11 +1,11 @@
-const {Adminlist} = require('../../models')
-const {User} = require('../../models')
+const {Adminlist,User,Main} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 
 let login = (req,res)=>{
     res.render('./admin/main.html')
 }
+
 let login_post = async (req,res)=>{
     let idxx = req.body.idx
     let psww = req.body.psw
@@ -83,13 +83,9 @@ let admin_search = async (req,res)=>{
     }
 }
 
-let user_list = (req,res)=>{
-    // try{
-
-    // }catch{
-
-    // }
-    res.render('./admin/user_list.html')
+let user_list = async (req,res)=>{
+    let resu = await User.findAll()
+    res.render('./admin/user_list.html',{resu})
 }
 
 let add_user = async (req,res)=>{
@@ -102,30 +98,25 @@ let add_user = async (req,res)=>{
         res.send('동일한 아이디가 이미 존재합니다.')
         console.log(e,'===============================')
     }
-        // let resu = User.findOne({
-    //     where:{
-    //         userIdx:req.body.userIdx
-    //     }
-    // })
-    // if(resu){
-    //     console.log(resu)
-    // }
-    // try{
-        
-    //     //let resu = await User.create({
-
-        
-    // }catch(e){
-    //     console.log('err================',e)
-    // }
-    // console.log('add_user')
-    // res.send('adduser')
+       
 }
 
+let board_manage = (req,res)=>{
+    res.render('./admin/board_make.html')
+}
 
-module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list,add_user}
+let board_make = async (req,res)=>{
+    console.log(req)
+    let main ="a"
+    let subBoard ="a"
+    let watchaut = 0
+    let url = "a" 
+    await Main.create({main:'a',subBoard:'a',watchaut:1,url:'a'})
+    res.render('./admin/board_make.html')
+}
+module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make}
 
 // 질문
+// user_list에서 한번에 현재 사용자에 대한 정보를 보여주는 것 nunjucks for문
 // 수정클릭시 update 방법
 // 가입일 포멧에 맞춰서 넣는 것
-// 동일한 아이디가 존재하는 경우

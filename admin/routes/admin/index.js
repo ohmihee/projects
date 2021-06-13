@@ -12,6 +12,8 @@ router.post('/searched_data',userController.searched_data)
 router.post('/admin_search',userController.admin_search)
 router.get('/user_list',userController.user_list) 
 router.post('/user_list',userController.add_user)
+router.get('/board_make',userController.board_manage)
+router.post('/board_make',userController.board_make)
 //router.get('/search_m',userController.manager_search)
 //router.post('/search_m',userController.manager_search)s
 

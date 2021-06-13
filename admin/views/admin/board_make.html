@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <th>메인게시판</th>
+        <th>서브게시판</th>
+        <th>숨김여부</th>
+    </table>
+    <form action="/admin/board_make" method="POST">
+        <div>
+            <label for="mainBoard">메인게시판</label>
+            <input type="text" name="main" id="mainBoard">
+        </div>
+        <input type="submit" value="게시판 생성">
+    </form>
+</body>
+</html>
