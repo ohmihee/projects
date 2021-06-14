@@ -6,6 +6,10 @@ let login = (req,res)=>{
     res.render('./admin/main.html')
 }
 
+let login_get = (req,res)=>{
+    res.redirect('/admin/admin_list')
+}
+
 let login_post = async (req,res)=>{
     let idxx = req.body.idx
     let psww = req.body.psw
@@ -26,7 +30,6 @@ let login_post = async (req,res)=>{
         res.render('./admin/admin_list',{resu,getDate})
     }catch(e){    
         res.send('해당하는 사용자가 존재하지 않습니다.')
-
     }
 }
 
@@ -43,6 +46,7 @@ let admin_add = async (req,res)=>{
     res.redirect('/admin/admin_list')
 }
 
+
 let searched_data = async (req,res)=>{
     if(req.body.delete=='삭제'){
         await Adminlist.destroy({
@@ -54,6 +58,10 @@ let searched_data = async (req,res)=>{
     }else{
         res.send('수정 부분 코드 짜기')//===================================
     }
+}
+
+let admin_search_get = (req,res)=>{
+    res.redirect('/admin/admin_list')
 }
 
 let admin_search = async (req,res)=>{
@@ -114,7 +122,7 @@ let board_make = async (req,res)=>{
     await Main.create({main:'a',subBoard:'a',watchaut:1,url:'a'})
     res.render('./admin/board_make.html')
 }
-module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make}
+module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make,login_get,admin_search_get}
 
 // 질문
 // 수정클릭시 update 방법
