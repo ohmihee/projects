@@ -110,19 +110,8 @@ let add_user = async (req,res)=>{
     }
 }
 
-let board_manage = (req,res)=>{
-    res.render('./admin/board_make.html')
-}
 
-let board_make = async (req,res)=>{
-    console.log(req)
-    let main ="a"
-    let subBoard ="a"
-    let watchaut = 0
-    let url = "a" 
-    await Main.create({main:'a',subBoard:'a',watchaut:1,url:'a'})
-    res.render('./admin/board_make.html')
-}
+
 
 let site_set = (req,res)=>{
     res.render('./admin/siteset.html')
@@ -135,7 +124,7 @@ let site_set_post = (req,res)=>{
 }
 
 
-module.exports = {login,login_on,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make,admin_search_get,site_set,site_set_post,admin_list_get}
+module.exports = {login,login_on,admin_list,admin_add,searched_data,admin_search,user_list,add_user,admin_search_get,site_set,site_set_post,admin_list_get}
 
 // 질문
 // 수정클릭시 update 방법

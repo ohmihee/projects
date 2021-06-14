@@ -12,9 +12,9 @@ module.exports = class Submain extends Sequelize.Model{
                 type:Sequelize.STRING(30),
                 allowNull:false
             },
-            contentType:{
-                type:Sequelize.STRING(30),
-                allowNull:false
+            content:{
+                type:Sequelize.TEXT,
+                allowNull:true
             },
             resetDate:{
                 type:Sequelize.DATE,
@@ -25,14 +25,17 @@ module.exports = class Submain extends Sequelize.Model{
             },
             watchaut:{
                 type:Sequelize.BOOLEAN,
+                defaultValue:0,
                 allowNull:false
             },
             writeaut:{
                 type:Sequelize.BOOLEAN,
+                defaultValue:0,
                 allowNull:false
             },
             replyaut:{
                 type:Sequelize.BOOLEAN,
+                defaultValue:0,
                 allowNull:false
             }
         },{

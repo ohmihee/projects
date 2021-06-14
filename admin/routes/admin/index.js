@@ -18,8 +18,6 @@ router.get('/admin_search',userController.admin_search_get)
 router.post('/admin_search',userController.admin_search)
 router.get('/user_list',userController.user_list) 
 router.post('/user_list',userController.add_user)
-router.get('/board_make',userController.board_manage)
-router.post('/board_make',userController.board_make)
 router.get('/site_set',userController.site_set)
 router.post('/site_set',userController.site_set_post)
 //router.get('/search_m',userController.manager_search)
@@ -33,8 +31,10 @@ router.get('/community',(req,res)=>{
     //console.log(req.session.idxx,'=======tophtml')
     res.render('./admin/top.html')
 })
-
-router.use('/board_make',mainboardController.board_make)
+//admin/board_make
+router.get('/board_make',mainboardController.board_page)
+router.post('/board_make',mainboardController.board_make)
+router.post('/board_manage',mainboardController.board_manage)
 
 
 

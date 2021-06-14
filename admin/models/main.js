@@ -14,7 +14,8 @@ module.exports = class Main extends Sequelize.Model{
             },
             watchaut:{
                 type:Sequelize.BOOLEAN,
-                allowNull:false
+                allowNull:false,
+                defaultValue:0,
             },
             url:{
                 type:Sequelize.STRING(100),
