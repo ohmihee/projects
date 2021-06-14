@@ -1,5 +1,6 @@
 //submain/category/title/contents/count/writer/img/enrollDate/file/writeaut/readaut/repelaut
 const Sequelize = require('sequelize')
+const moment = require('moment')
 
 module.exports = class Community extends Sequelize.Model{
     static init(sequelize){
@@ -37,6 +38,9 @@ module.exports = class Community extends Sequelize.Model{
                 type:Sequelize.DATE,
                 allowNull:false,
                 defaultValue:Sequelize.NOW,
+                get: function(){
+                    return moment(this.getDataValue('enrollmentDate')).format('YYYY-MM-DD')
+                }
             },
             file:{
                 type:Sequelize.TEXT,

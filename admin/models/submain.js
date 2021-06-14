@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const moment = require('moment')
 
 module.exports = class Submain extends Sequelize.Model{
     static init(sequelize){
@@ -18,6 +19,9 @@ module.exports = class Submain extends Sequelize.Model{
             resetDate:{
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,
+                get: function(){
+                    return moment(this.getDataValue('resetDate')).format('YYYY-MM-DD')
+                }
             },
             watchaut:{
                 type:Sequelize.BOOLEAN,

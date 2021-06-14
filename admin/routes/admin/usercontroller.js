@@ -6,11 +6,9 @@ let login = (req,res)=>{
     res.render('./admin/main.html')
 }
 
-let login_get = (req,res)=>{
-    res.redirect('/admin/admin_list')
-}
+// let adminList = await Adminlist.findAll()
 
-let login_post = async (req,res)=>{
+let login_on = async (req,res)=>{
     let idxx = req.body.idx
     let psww = req.body.psw
     let hashedpsw = pwHash(psww) 
@@ -24,19 +22,26 @@ let login_post = async (req,res)=>{
         let token = ctoken(idxx)
         res.cookie('AccessToken',token,{})
         req.session.uid = {["local"]:resu.idx}
-        let date = resu.startDate
-        let getDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
+        req.session.level = resu.level
         
-        res.render('./admin/admin_list',{resu,getDate})
+        
+        res.render('./admin/admin_list',{resu})
     }catch(e){    
         res.send('해당하는 사용자가 존재하지 않습니다.')
     }
 }
 
-let admin_list =  (req,res)=>{
-    res.render('./admin/admin_list.html')
+let admin_list = async (req,res)=>{
+    let adminList = await Adminlist.findAll()
+    res.render('./admin/admin_list.html',{adminList})
 }   
 
+let admin_list_get = async (req,res)=>{
+    console.log(req.session.level,'uid=================================')
+    let resu = req.session
+    let adminList = await Adminlist.findAll()
+    res.render('./admin/admin_list.html',{resu,adminList})
+}
 let admin_add = async (req,res)=>{
     let {name,idx,psw,birth,courseName,level,tel,startDate,email,img} = req.body
     psw = pwHash(psw)
@@ -72,19 +77,14 @@ let admin_search = async (req,res)=>{
                     name:req.body.value
                 }
             })
-            let date = resu.startDate
-            let getDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
-            res.render('./admin/admin_list.html',{resu,getDate})
-            console.log('resu=======================',resu)
+            res.render('./admin/admin_list.html',{resu})
         }else if(req.body.search_condition_m=="class_name"){
             let resu = await Adminlist.findOne({
                 where:{
                     courseName:req.body.value
                 }
             })
-            let date = resu.startDate
-            let getDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
-            res.render('./admin/admin_list.html',{resu,getDate})            
+            res.render('./admin/admin_list.html',{resu})            
         }
     }catch(e){
         res.send('해당하는 사용자가 존재하지 않습니다.')
@@ -100,6 +100,7 @@ let add_user = async (req,res)=>{
     console.log(req.body)
     try{
         let {userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg} = req.body
+        userPsw = pwHash(userPsw) 
         await User.create({userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg})
         // redirect로 db 값 전달하는 방법
         res.redirect('/admin/user_list')
@@ -107,7 +108,6 @@ let add_user = async (req,res)=>{
         res.send('동일한 아이디가 이미 존재합니다.')
         console.log(e,'===============================')
     }
-       
 }
 
 let board_manage = (req,res)=>{
@@ -123,7 +123,19 @@ let board_make = async (req,res)=>{
     await Main.create({main:'a',subBoard:'a',watchaut:1,url:'a'})
     res.render('./admin/board_make.html')
 }
-module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make,login_get,admin_search_get}
+
+let site_set = (req,res)=>{
+    res.render('./admin/siteset.html')
+    
+}
+
+let site_set_post = (req,res)=>{
+    res.render('./admin/siteset.html')
+    console.log('siteset')
+}
+
+
+module.exports = {login,login_on,admin_list,admin_add,searched_data,admin_search,user_list,add_user,board_manage,board_make,admin_search_get,site_set,site_set_post,admin_list_get}
 
 // 질문
 // 수정클릭시 update 방법

@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const moment = require('moment')
 
 module.exports = class Adminlist extends Sequelize.Model{
     static init(sequelize){
@@ -19,6 +20,9 @@ module.exports = class Adminlist extends Sequelize.Model{
             birth:{
                 type:Sequelize.DATE,
                 allowNull:false,
+                get: function(){
+                    return moment(this.getDataValue('birth')).format('YYYY-MM-DD')
+                }
             },
             courseName:{
                 type:Sequelize.STRING(30),
@@ -37,6 +41,9 @@ module.exports = class Adminlist extends Sequelize.Model{
                 allowNull:false,
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,
+                get: function(){
+                    return moment(this.getDataValue('startDate')).format('YYYY-MM-DD')
+                }
             },
             email:{
                 type:Sequelize.STRING(50),

@@ -7,17 +7,66 @@
     <title>Document</title>
 </head>
 <body>
-    <table border="1">
-        <th>메인게시판</th>
-        <th>서브게시판</th>
-        <th>숨김여부</th>
-    </table>
-    <form action="/admin/board_make" method="POST">
-        <div>
-            <label for="mainBoard">메인게시판</label>
-            <input type="text" name="main" id="mainBoard">
-        </div>
-        <input type="submit" value="게시판 생성">
-    </form>
+    <div>
+        <form action="/admin/board_make" method="POST">
+            <div id = "top_title">
+                <p>게시판 생성관리 - 원테이블을 사용합니다.</p>
+            </div>
+            <p>게시판 항목 생성하기 (하나의 테이블을 이용합니다.)</p>
+            <table border="1">
+                <td>게시판명</td>
+                <td>게시판테이블명</td>            
+                <tr>
+                    <td>
+                        <input type="text" name="boardName">
+                    </td>
+                    <td>
+                        <input type="text" name="tableName">
+                    </td>
+                </tr>                
+            </table>
+            <input type="submit" value="게시판 생성">
+        </form>
+    </div>
+    <div>
+        
+        <form action="/admin/board_manage" method="POST">
+            <p>게시판 수정 관리</p>
+            <table border="1">                
+                <td>번호</td>
+                <td>테이블명</td>
+                <td>게시판이름</td>
+                <td>형태</td>
+                <td>읽기권한</td>
+                <td>쓰기권한</td>
+                <td>리플권한</td>
+                <td>댓글권한</td>
+                <td>스킨</td>
+                <td>그룹</td>
+                <td>수정</td>
+                <td>삭제</td>
+                <tr>
+                    <td>
+                        {{boardres.id}}
+                    </td>
+                    <td>
+                        {{boardres.name}}
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <input type="submit" value="게시판 수정관리">
+        </form>
+
+    </div>
 </body>
 </html>

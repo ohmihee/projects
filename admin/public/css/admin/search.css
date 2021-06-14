@@ -93,9 +93,11 @@ a{
     border:1px solid black;
 }
 #searched_form div, #admin_add_form>div{
-    
     width: 200px;
     padding: 10px;
+}
+#searched_form > div > input {
+    border:0px solid;
 }
 label{
     font-size: 17px;

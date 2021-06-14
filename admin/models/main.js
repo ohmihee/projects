@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+const moment = require('moment')
 
 module.exports = class Main extends Sequelize.Model{
     static init(sequelize){

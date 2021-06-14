@@ -19,7 +19,7 @@
                 <li><a href="">시설소개</a></li>
                 <li><a href="">교육과정</a></li>
                 <li><a href="">취업정보</a></li>
-                <li><a href="">커뮤니티</a></li>
+                <li><a href="/admin/community">커뮤니티</a></li>
                 <li><a href="">상담신청</a></li>
                 <li><a href="">방문자정보</a></li>
             </ul>
@@ -47,8 +47,8 @@
                             <tr>
                                 <td>
                                     <ul id="list_column_m">
-                                        <li><a href="">관리자리스트</a></li>
-                                        <li><a href="">사이트환경설정</a></li>
+                                        <li><a href="/admin/admin_list">관리자리스트</a></li>
+                                        <li><a href="/admin/site_set">사이트환경설정</a></li>
                                         <li><a href="/admin/board_make">게시판생성관리</a></li>
                                         <li><a href="">게시판그룹관리</a></li>
                                         <li><a href="">팝업관리</a></li>
@@ -68,8 +68,6 @@
                 <p>관리자리스트</p>
                 <form action="/admin/admin_search" method="POST">
                     <fieldset>
-                        <legned>관리자리스트</legned>
-                        관리자등급 : <input type="text">
                         검색조건 : 
                                   <select name="search_condition_m">
                                       <option value="name">이름</option>
@@ -154,7 +152,7 @@
                         </div>
                         <div>    
                             <label for="startDate" id="admin_label">가입일</label>
-                            <input type="date" value="{{getDate}}" name="StartDate" id="admin_input" required>
+                            <input type="date" value="{{resu.birth}}" name="StartDate" id="admin_input" required>
                         </div>
                         <div class="submit">
                             <input type="submit" value="삭제" name="delete" id="submit">
@@ -171,16 +169,16 @@
                     <th>연락처</th>
                     <th>이메일</th>
                     <th>가입일</th>
-                    {% set res = resu %}
+                    {% set res = adminList %}
                     {% for item in res %}
                     <tr>
-                        <td>{{res[loop.index].id}}</td>
-                        <td>{{res[loop.index].name}}</td>
-                        <td>{{res[loop.index].level}}</td>
-                        <td>{{res[loop.index].idx}}</td>
-                        <td>{{res[loop.index].tel}}</td>
-                        <td>{{res[loop.index].email}}</td>
-                        <td>{{res[loop.index].startDate}}</td>
+                        <td>{{res[loop.index-1].id}}</td>
+                        <td>{{res[loop.index-1].name}}</td>
+                        <td>{{res[loop.index-1].level}}</td>
+                        <td>{{res[loop.index-1].idx}}</td>
+                        <td>{{res[loop.index-1].tel}}</td>
+                        <td>{{res[loop.index-1].email}}</td>
+                        <td>{{res[loop.index-1].startDate}}</td>
                     </tr>
                     {% endfor %}
                 </table>
