@@ -160,8 +160,30 @@
                             <input type="submit" value="삭제" name="delete" id="submit">
                             <input type="submit" value="수정" name="modify" id="submit">
                         </div>
-                
                 </form>
+            </div>
+            <div id="main_container_sub_m">
+                <table border="1">
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>관리자등급</th>
+                    <th>아이디</th>
+                    <th>연락처</th>
+                    <th>이메일</th>
+                    <th>가입일</th>
+                    {% set res = resu %}
+                    {% for item in res %}
+                    <tr>
+                        <td>{{res[loop.index].id}}</td>
+                        <td>{{res[loop.index].name}}</td>
+                        <td>{{res[loop.index].level}}</td>
+                        <td>{{res[loop.index].idx}}</td>
+                        <td>{{res[loop.index].tel}}</td>
+                        <td>{{res[loop.index].email}}</td>
+                        <td>{{res[loop.index].startDate}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

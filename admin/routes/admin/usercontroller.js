@@ -101,6 +101,7 @@ let add_user = async (req,res)=>{
     try{
         let {userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg} = req.body
         await User.create({userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg})
+        // redirect로 db 값 전달하는 방법
         res.redirect('/admin/user_list')
     }catch(e){
         res.send('동일한 아이디가 이미 존재합니다.')
@@ -127,3 +128,4 @@ module.exports = {login,login_post,admin_list,admin_add,searched_data,admin_sear
 // 질문
 // 수정클릭시 update 방법
 // 가입일 포멧에 맞춰서 넣는 것
+// redirect로 db 값 전달하는 방법
