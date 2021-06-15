@@ -1,30 +1,40 @@
 <link rel ="stylesheet" href="/css/admin/search.css">
 <link rel ="stylesheet" href="/css/admin/main.css">
-<div id="top_m">
-    <div id="top_contents_container">
-        <div id="logo">
-            <p>경일직업능력개발원</p>
+<div id="total_container">    
+    <div id="top_m">
+        <div id="top_contents_container">
+            <div id="logo">
+                <p>경일직업능력개발원</p>
+            </div>
+            <ul>
+                <li><a href="">administrator</a></li>
+                <li><a href="">시설소개</a></li>
+                <li><a href="">교육과정</a></li>
+                <li><a href="">취업정보</a></li>
+                <li><a href="">커뮤니티</a></li>
+                <li><a href="">상담신청</a></li>
+                <li><a href="">방문자정보</a></li>
+            </ul>
         </div>
+    </div>
+    <div id="left_contents_container_m">
         <ul>
-            <li><a href="">administrator</a></li>
-            <li><a href="">시설소개</a></li>
-            <li><a href="">교육과정</a></li>
-            <li><a href="">취업정보</a></li>
-            <li><a href="">커뮤니티</a></li>
-            <li><a href="">상담신청</a></li>
-            <li><a href="">방문자정보</a></li>
+            <li class="manager_mode_m">
+                <p><a href="">관리자모드</a></p>
+                <ul>
+                    <li><span>{{resu.level}}  :  </span><span><a href="">   로그인</a></span></li>
+                    <li><span id="manager_name_m"></span></li>
+                    <li><span>현재 시간</span></li>
+                </ul>
+            </li>
+        </ul>
+        <ul>
+            <li><p>좌측메뉴</p></li>
+            {% set res = subBoard%}
+            {% for item in res %}
+                <li><a href="/admin/sub_board_search?id={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}{{[loop.index]}}</a></li>
+            {% endfor %}
+
         </ul>
     </div>
-</div>
-<div id="left_contents_container_m">
-    <ul>
-        <li class="manager_mode_m">
-            <p><a href="">관리자모드</a></p>
-            <ul>
-                <li><span>{{resu.level}}  :  </span><span><a href="">   로그인</a></span></li>
-                <li><span id="manager_name_m"></span></li>
-                <li><span>현재 시간</span></li>
-            </ul>
-        </li>
-    </ul>
 </div>

@@ -4,7 +4,7 @@ const moment = require('moment')
 module.exports = class Main extends Sequelize.Model{
     static init(sequelize){
         return super.init({
-            main:{
+            mainBoard:{
                 type:Sequelize.STRING(30),
                 allowNull:false
             },

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const communityController = require('./communityController.js')
 const userController = require('./usercontroller.js')
 //const communityController = require('./communityController.js')
 const mainboardController = require('./mainboardController.js')
@@ -24,13 +24,8 @@ router.post('/site_set',userController.site_set_post)
 //router.post('/search_m',userController.manager_search)
 
 //router.use('/community',communityController.report)
-router.get('/community',(req,res)=>{
-    //console.log(req.sessioin)
-
-    req.session.idxx = 'idxxxx'
-    //console.log(req.session.idxx,'=======tophtml')
-    res.render('./admin/top.html')
-})
+router.get('/community',communityController.report_page)
+router.get('/sub_board_search',communityController.sub_board_search)
 //admin/board_make
 router.get('/board_make',mainboardController.board_page)
 router.post('/board_make',mainboardController.board_make)

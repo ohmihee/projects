@@ -12,7 +12,7 @@ module.exports = class Submain extends Sequelize.Model{
                 type:Sequelize.STRING(30),
                 allowNull:false
             },
-            content:{
+            contentType:{
                 type:Sequelize.TEXT,
                 allowNull:true
             },

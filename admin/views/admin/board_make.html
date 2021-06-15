@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/admin/board.css">
 </head>
 <body>
     <div>
@@ -37,12 +38,12 @@
                         {% endfor %}
 
                         </select>
-                    </td>
+                    </td>                   
                     <td>
                         <input type="text" name="url">
                     </td>
                     <td>
-                        <input type="text" name="content">
+                        <input type="text" name="contentType">
                     </td>
                     <td>
                         <input type="checkbox" name="watchaut" value="1">
@@ -62,7 +63,7 @@
 
     </form>
     <div>    
-        <form action="/admin/board_manage" method="POST">
+        <form action="/admin/board_manage" method="POST" id="board_manage_form">
             <p>게시판 수정 관리</p>
             <table border="1">                
                 <td>번호</td>
@@ -85,22 +86,22 @@
                         테이블명
                     </td>
                     <td>
-                        {{res[loop.index-1].subBoard}}
+                        <input type="text" value="{{res[loop.index-1].subBoard}}" name="subBoard">
                     </td>
                     <td>
-                        {{res[loop.index-1].watchaut}}
+                        <input type="text" value="{{res[loop.index-1].watchaut}}" name="watchaut">
                     </td>
                     <td>
-                        {{res[loop.index-1].writeaut}}
+                        <input type="text" value="{{res[loop.index-1].writeaut}}" name="writeaut">
                     </td>
                     <td>
-                        {{res[loop.index-1].replyaut}}
+                        <input type="text" value="{{res[loop.index-1].replyaut}}" name="replyaut">
                     </td>
                     <td>
-                        {{res[loop.index-1].content}}
+                        <input type="text" value="{{res[loop.index-1].content}}" name="content">
                     </td>
                     <td>
-                        {{res[loop.index-1].mainBoard}}
+                        <input type="text"  value="{{res[loop.index-1].mainBoard}}" name="mainBoard">
                     </td>
                     <td>
                         <input type="submit" name="modify" value="수정">

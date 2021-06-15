@@ -1,0 +1,17 @@
+body{
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+ul li{
+    list-style-type:none;
+}
+a{
+    text-decoration: none;
+}
+*{
+    margin:0;
+    padding:0;
+}
+#board_manage_form input{
+    border:none;
+}
