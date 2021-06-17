@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,40 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel ="stylesheet" href="/css/admin/search.css">
+    <link rel="stylesheet" href="/css/admin/board.css">
+
+
 </head>
 <body>
-    <div>
-        <P>공지사항list</P>
-        <div id="report_list_search">
-
-        </div>
+<div id="total_container">
+    <div id="top_container_c">
+        
+        {% block content %}
+        {% endblock %}
     </div>
-    <div>
-        <form action="">
-            <table border="1">
-                <td>번호</td>
-                <td>제목</td>
-                <td>보안/숨김</td>
-                <td>작성자</td>
-                <td>날짜</td>
-                <td>조회수</td>
-                <td>첨부파일</td>
-                <td>수정</td>
-                <td>삭제</td>
-                <tr>
-                    <td><input type="number" value="1"></td>
-                    <td><input type="text" value="기획반모집"></td>
-                    <td><input type="text" value="보안/숨김"></td>
-                    <td><input type="text" value="최고관리자"></td>
-                    <td><input type="date" value="2021-05-26"></td>
-                    <td><input type="number" value="25"></td>
-                    <td><input type="file" value="파일"></td>
-                    <td><input type="submit" value="수정" name="modify"></td>
-                    <td><input type="submit" value="삭제" name="remove"></td>
-                </tr>                
-            </table>
-        </form>
+    {% if subBoard.contentType==1 %}
+    
+        <p>여기는 갤러리 형식</p>
 
+    {% elif subBoard.contnetType==0 %}
+
+        <p>여기는 형식이 0</p>
+     
+     {% else %}
+    <div id="contents_container_c">
+        {% block tableContents %}
+        {% endblock%}
     </div>
+    {% endif %}
+</div>
 </body>
 </html>

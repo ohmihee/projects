@@ -1,8 +1,11 @@
-const {Adminlist,User,Main} = require('../../models')
+const {Adminlist,User,Main,Community,Course,Employed,Portfolio,Submain} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 
 let login = (req,res)=>{
+
+
+
     res.render('./admin/main.html')
 }
 
@@ -109,9 +112,6 @@ let add_user = async (req,res)=>{
         console.log(e,'===============================')
     }
 }
-
-
-
 
 let site_set = (req,res)=>{
     res.render('./admin/siteset.html')

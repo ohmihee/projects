@@ -1,17 +1,18 @@
-body{
-    box-sizing: border-box;
-    background-color: whitesmoke;
+#community_left_m{
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border:1px solid black;
+    padding-left: 70px;
+    margin-left: 40px;
 }
-ul li{
-    list-style-type:none;
+#community_table_content{
+    padding: 20px;
+
 }
-a{
-    text-decoration: none;
+#community_table_content th{
+padding: 10px;
 }
-*{
-    margin:0;
-    padding:0;
-}
-#board_manage_form input{
-    border:none;
-}
+

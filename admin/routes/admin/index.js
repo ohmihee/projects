@@ -4,6 +4,7 @@ const communityController = require('./communityController.js')
 const userController = require('./usercontroller.js')
 //const communityController = require('./communityController.js')
 const mainboardController = require('./mainboardController.js')
+const category = require('./category.js')
 
 
 // /admin
@@ -26,11 +27,14 @@ router.post('/site_set',userController.site_set_post)
 //router.use('/community',communityController.report)
 router.get('/community',communityController.report_page)
 router.get('/sub_board_search',communityController.sub_board_search)
+router.post('/community/m_contents',communityController.make_contents)
+router.get('/community_write',communityController.write)
 //admin/board_make
 router.get('/board_make',mainboardController.board_page)
 router.post('/board_make',mainboardController.board_make)
 router.post('/board_manage',mainboardController.board_manage)
 
-
+/
+router.get('/mainBoard_category',category.index)
 
 module.exports = router

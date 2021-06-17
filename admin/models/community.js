@@ -5,11 +5,11 @@ const moment = require('moment')
 module.exports = class Community extends Sequelize.Model{
     static init(sequelize){
         return super.init({
-            subBoard:{
+            mainBoard:{
                 type:Sequelize.STRING(30),
                 allowNull:false
             },
-            category:{
+            subBoard:{
                 type:Sequelize.STRING(30),
                 allowNull:false
             },
@@ -48,15 +48,18 @@ module.exports = class Community extends Sequelize.Model{
             },
             writeaut:{
                 type:Sequelize.BOOLEAN,
-                allowNull:false
+                allowNull:false,
+                defaultValue:0
             },
             readaut:{
                 type:Sequelize.BOOLEAN,
-                allowNull:false
+                allowNull:false,
+                defaultValue:0
             },
             replyaut:{
                 type:Sequelize.BOOLEAN,
-                allowNull:false
+                allowNull:false,
+                defaultValue:0
             }           
         },{
             sequelize,

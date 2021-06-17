@@ -18,10 +18,10 @@ sequelize.sync({force:false})
 .catch((err)=>{
     console.log('db err',err)
 })
-
-nunjucks.configure('views',{express:app})
-
 app.set('view engine','html')
+nunjucks.configure('views',{express:app,watch:true,})
+
+
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
