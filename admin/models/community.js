@@ -1,4 +1,3 @@
-//submain/category/title/contents/count/writer/img/enrollDate/file/writeaut/readaut/repelaut
 const Sequelize = require('sequelize')
 const moment = require('moment')
 
@@ -7,11 +6,11 @@ module.exports = class Community extends Sequelize.Model{
         return super.init({
             mainBoard:{
                 type:Sequelize.STRING(30),
-                allowNull:false
+                allowNull:false,
             },
             subBoard:{
                 type:Sequelize.STRING(30),
-                allowNull:false
+                allowNull:false,
             },
             title:{
                 type:Sequelize.STRING(50),
@@ -26,6 +25,11 @@ module.exports = class Community extends Sequelize.Model{
                 allowNull:false,
                 defaultValue:0
             },
+            // idx:{
+            //     type:Sequelize.STRING(30),
+            //     allowNull:false,
+            //     unique:true,
+            // },
             writer:{
                 type:Sequelize.STRING(30),
                 allowNull:false,
@@ -51,7 +55,7 @@ module.exports = class Community extends Sequelize.Model{
                 allowNull:false,
                 defaultValue:0
             },
-            readaut:{
+            watchaut:{
                 type:Sequelize.BOOLEAN,
                 allowNull:false,
                 defaultValue:0
@@ -65,11 +69,16 @@ module.exports = class Community extends Sequelize.Model{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'community',
+            modelName:'Community',
             tableName:'communitys',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         })
     }
+    static associate (db){
+        db.Community.belongsTo(db.Adminlist,{foreignKey:'idx',sourceKey:'idx'})
+        //db.Community.belongsTo(db.Submain,{foreignKey:'subBoard',sourceKey:'subBoard'})
+    }
+   
 }

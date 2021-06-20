@@ -10,7 +10,9 @@ module.exports = class Submain extends Sequelize.Model{
             },
             subBoard:{
                 type:Sequelize.STRING(30),
-                allowNull:false
+                allowNull:false,
+                unique:true
+                
             },
             contentType:{
                 type:Sequelize.TEXT,
@@ -42,11 +44,16 @@ module.exports = class Submain extends Sequelize.Model{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'submain',
+            modelName:'Submain',
             tableName:'submains',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         })
     }
+    static associate(db){
+        db.Submain.belongsTo(db.Main,{foreignKey:'mainBoard',sourceKey:'mainBoard'})
+        //db.Submain.hasMany(db.Community,{foreignKey:'subBoard',sourceKey:'subBoard'})
+    }
+   
 }

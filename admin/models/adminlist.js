@@ -9,7 +9,7 @@ module.exports = class Adminlist extends Sequelize.Model{
                 allowNull:false
             },
             idx:{
-                type:Sequelize.STRING(20),
+                type:Sequelize.STRING(30),
                 allowNull:false,
                 unique:true,
             },
@@ -58,11 +58,15 @@ module.exports = class Adminlist extends Sequelize.Model{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'adminlist',
+            modelName:'Adminlist',
             tableName:'adminlist',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         })
+    }
+    static associate (db){
+        db.Adminlist.hasMany(db.Community,{foreignKey:'writer',sourceKey:'idx'})
+        db.Adminlist.hasMany(db.Course,{foreignKey:'idx',sourceKey:'idx'})
     }
 }

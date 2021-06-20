@@ -21,7 +21,7 @@
                 <li><a href="/admin/mainBoard_category?idx=취업정보">취업정보</a></li>
                 <li><a href="/admin/mainBoard_category?idx=커뮤니티">커뮤니티</a></li>
                 <li><a href="/admin/mainBoard_category?idx=상담신청">상담신청</a></li>
-                <li><a href="/admin/mainBoard_category?idx=방문자정보">방문자정보</a></li>
+                <li><a href="/admin/mainBoard_category?idx=방문자신청">방문자정보</a></li>
             </ul>
         </div>
     </div>
@@ -31,7 +31,7 @@
                 <li class="manager_mode_m">
                     <p><a href="">관리자모드</a></p>
                     <ul>
-                        <li><span>{{resu.level}}  :  </span><span><a href="">   로그인</a></span></li>
+                        <li><span>{{resu.idx}}  :  </span><span><a href="">로그인</a></span></li>
                         <li><span id="manager_name_m"></span></li>
                         <li><span>현재 시간</span></li>
                     </ul>
@@ -71,7 +71,7 @@
                         검색조건 : 
                                   <select name="search_condition_m">
                                       <option value="name">이름</option>
-                                      <option value="class_name">반</option>
+                                      <option value="class_name">직무</option>
                                   </select>
                                   <input type="text" name="value" >
                         <input type="submit" value="검색" name="search">

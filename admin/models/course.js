@@ -71,11 +71,16 @@ module.exports = class Course extends Sequelize.Model{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'course',
+            modelName:'Course',
             tableName:'courses',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         })
     }
+    static associate (db){
+        db.Course.belongsTo(db.Adminlist,{foreignKey:'idx',sourceKey:'idx'})
+        db.Course.hasMany(db.User,{foreignKey:'courseName',sourceKey:'courseName'})
+    }
+    
 }

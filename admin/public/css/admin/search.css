@@ -12,27 +12,43 @@ ul li{
 a{
     text-decoration: none;
 }
+#top_m{
+    display: flex;
+    justify-content: center;
+}
 #top_contents_container{
     width: 1920px;
+    background-color: #b3b3cb;
     display: flex;
     flex-direction: row;
 }
-#top_m{
-    border: 1px solid #333333;
-}
 #logo{
-    width:200px;
+    display: flex;
+    justify-content: center;
+    width:400px;
 }
 #top_m>div>ul{
     width: 1920px;
+    height: 40px;
     display: flex;
     flex-direction: row;
     justify-content:space-evenly;
+    
 }
-#top_m>div>ul>li{
+#top_m>div>ul>li {
+    box-sizing: border-box;
     margin-right: 30px;
-    padding-right: 60px;
-    border-right: 1px solid #333333;
+    padding-right: 30px;
+    font-size: 17px;
+    font-weight: 600;
+}
+#top_m>div>ul>li>a{
+    text-decoration: none;
+    color:#48486a;
+}
+#top_m>div>ul>li:hover{
+    font-size: 19px;
+    color:#535379;
 }
 #contents_m{
     display: flex;

@@ -82,10 +82,10 @@
                 <tr>
                     <td>
                         <input type="text" value="{{[loop.index-1]}}" name="number" >
+                        <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck"  style="display:none">
                     </td>
                     <td>
-                        <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck"  style="display:none">
-                        테이블명
+                        <input type="text" value="테이블명">
                     </td>
                     <td>
                         <input type="text" value="{{res[loop.index-1].subBoard}}" name="subBoard">

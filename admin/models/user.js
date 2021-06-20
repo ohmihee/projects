@@ -64,18 +64,21 @@ module.exports = class User extends Sequelize.Model{
             portfolio:{
                 type:Sequelize.BOOLEAN,
                 allowNull:false
-
             }
         },{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'user',
+            modelName:'User',
             tableName:'users',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         });
     }
-    
+    static associate(db){
+        db.User.hasMany(db.portfolio,{foreignKey:'userIdx',sourceKey:'userIdx'})
+        db.User.belongsTo(db.Course,{foreignKey:'courseName',sourceKey:'courseName'})
+        db.User.belongsTo(db.Employed,{foreignKey:'userIdx',sourceKey:'userIdx'})
+    }
 }

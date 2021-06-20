@@ -59,6 +59,8 @@ Portfolio.init(sequelize)
 Submain.init(sequelize)
 User.init(sequelize)
 
+Adminlist.associate(db)
+Community.associate(db)
 
 
 

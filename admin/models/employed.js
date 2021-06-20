@@ -9,6 +9,11 @@ module.exports = class Employed extends Sequelize.Model{
                 type:Sequelize.STRING(20),
                 allowNull:false,
             },
+            userIdx:{
+                type:Sequelize.STRING(20),
+                allowNull:false,
+                unique:true,
+            },
             courseName:{
                 type:Sequelize.STRING(30),
                 allowNull:false
@@ -38,7 +43,7 @@ module.exports = class Employed extends Sequelize.Model{
                 type:Sequelize.BOOLEAN,
                 allowNull:false
             },
-            repelaut:{
+            replyaut:{
                 type:Sequelize.BOOLEAN,
                 allowNull:false
             }
@@ -46,12 +51,16 @@ module.exports = class Employed extends Sequelize.Model{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'employed',
+            modelName:'Employed',
             tableName:'employed',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_Ci'
-            
         })
+    }
+    static associate(db){{
+        db.Employed.belongsTo(db.User,{foreignKey:'userIdx',sourceKey:'userIdx'})
+    }
+        
     }
 }

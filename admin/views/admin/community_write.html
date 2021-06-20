@@ -3,7 +3,7 @@
 <div id="make_community">
     <button onclick="formBtn()">세부 항목 생성</button>
     <div id="community_form"  style="display: none;">
-        <form action="/admin/community/m_contents" method='POST' id="write_new">
+        <form action="/admin/community/m_contents?id={{id}}&idx={{idx}}" method='POST' id="write_new">
             <label for="mainBoard">mainboard</label>
             <input type="text" name="mainBoard">
             <label for="subBoard">subboard</label>
@@ -22,6 +22,8 @@
             <input type="text" name="readaut">
             <label for="replyaut">replyaut</label>
             <input type="text" name="replyaut">
+            <input type="text" name="id" value={{id}} style="display: none;">
+            <input type="text" name="idx" value={{idx}} style="display: none;">
             <input type="number" name="count" value="0" style="display:block">
             <input type="submit" value="추가 생성">
         </form>

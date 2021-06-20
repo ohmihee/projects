@@ -10,7 +10,7 @@ module.exports = class Main extends Sequelize.Model{
             },
             subBoard:{
                 type:Sequelize.STRING(30),
-                allowNull:false
+                allowNull:false,
             },
             watchaut:{
                 type:Sequelize.BOOLEAN,
@@ -25,12 +25,15 @@ module.exports = class Main extends Sequelize.Model{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'main',
+            modelName:'Main',
             tableName:'mains',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         })
+    }
+    static associate(db){
+        db.Main.hasMany(db.Submain,{foreignKey:'mainBoard',sourceKey:'mainBoard'})
     }
 }
    
