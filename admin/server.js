@@ -21,7 +21,7 @@ sequelize.sync({force:false})
 app.set('view engine','html')
 nunjucks.configure('views',{express:app,watch:true,})
 
-
+//
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
