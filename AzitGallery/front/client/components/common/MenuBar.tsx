@@ -154,7 +154,7 @@ const MenuBar = () => {
                         : <></>
             }
             <MenubarWrapper>
-                <span><Link href="/"><a><img src="https://dfassf-bucket-test.s3.ap-northeast-2.amazonaws.com/09ae0de8cad4e723505830df97f35348" /></a></Link></span>
+                {/* /*<span><Link href="/"><a><img src="https://dfassf-bucket-test.s3.ap-northeast-2.amazonaws.com/09ae0de8cad4e723505830df97f35348" /></a></Link></span> */}
                 <ul>
                     <li><Link href="/"><a>탐색하기</a></Link></li>
                     {loginState && User.adminApproval === 3 ? <LOG onClick={() => createBtn()}><Link href="/item/additem"><a>발행하기</a></Link></LOG> : <LOG onClick={() => createBtn()}>발행하기</LOG>}
@@ -162,7 +162,7 @@ const MenuBar = () => {
                     {loginState ? <Link href="/"><LOG onClick={() => { logout() }}>로그아웃</LOG></Link> : <LOG onClick={() => { login() }}>로그인</LOG>}
                 </ul>
             </MenubarWrapper>
-
+i
         </>
     )
 }

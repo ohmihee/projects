@@ -10,3 +10,5 @@ back/db_config.json
 */AzitGallery.pem
 AzitGallery.pem**
 node_modules
+*.pem
+*jopapply.pem
